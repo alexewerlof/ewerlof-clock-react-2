@@ -6,25 +6,50 @@ import Face from './Face'
 import Hour from './Hour'
 import Minute from './Minute'
 import Second from './Second'
+import { color } from './settings'
+import { DateHelper } from './util'
 
 class App extends Component {
+  state = {
+    width: 200,
+    height: 200,
+  }
+
+  requestAnimationFrameCallback = () => {
+    this.tick()
+    this.scheduleNextTick()
+  }
+
+  tick() {
+    this.setState({
+      time: new DateHelper()
+    })
+  }
+
+  scheduleNextTick() {
+    this.requestId = requestAnimationFrame(this.requestAnimationFrameCallback)
+  }
+
+  componentWillMount() {
+      this.tick()
+  }
+
+  componentDidMount() {
+      this.scheduleNextTick()
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this.requestId)
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Motor>
-          <Face></Face>
-          <Hour></Hour>
-          <Minute></Minute>
-          <Second></Second>
-        </Motor>
-      </div>
+      <svg width={this.state.width} height={this.state.height} style={ {backgroundColor: color.bg} }>
+          <Face bgColor={color.face} indicatorColor={color.indicator} {...this.state}></Face>
+          <Hour color={color.hour} {...this.state}></Hour>
+          <Minute color={color.minute} {...this.state}></Minute>
+          <Second color={color.second} {...this.state}></Second>
+      </svg>
     );
   }
 }
