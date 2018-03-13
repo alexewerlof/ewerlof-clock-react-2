@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Motor from './Motor'
 import Face from './Face'
 import Hour from './Hour'
 import Minute from './Minute'
