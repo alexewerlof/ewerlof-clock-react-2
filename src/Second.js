@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Poly } from './util.js';
 
 export default class Second extends Component {
 
@@ -8,28 +7,26 @@ export default class Second extends Component {
     }
 
     render() {
-        const { width, height, time, color } = this.props
-        const poly = new Poly(width, height)
-        const { sDeg } = time
+        const { time: { sDeg }, color, cPoly } = this.props
 
         return (
             <g>
             <line
-              x1={poly.X(sDeg, -20)}
-              y1={poly.Y(sDeg, -20)}
-              x2={poly.X(sDeg, 60)}
-              y2={poly.Y(sDeg, 60)}
+              x1={cPoly.X(sDeg, -20)}
+              y1={cPoly.Y(sDeg, -20)}
+              x2={cPoly.X(sDeg, 60)}
+              y2={cPoly.Y(sDeg, 60)}
               stroke={color}
-              strokeWidth={poly.R(2)} />
+              strokeWidth={cPoly.R(2)} />
             <circle
-              cx={poly.X(sDeg, 63)}
-              cy={poly.Y(sDeg, 63)}
-              r={poly.R(8)}
+              cx={cPoly.X(sDeg, 63)}
+              cy={cPoly.Y(sDeg, 63)}
+              r={cPoly.R(8)}
               fill={color} />
             <circle
-              cx={poly.cx}
-              cy={poly.cy}
-              r={poly.R(5)}
+              cx={cPoly.cx}
+              cy={cPoly.cy}
+              r={cPoly.R(5)}
               fill={color} />
           </g>
         );

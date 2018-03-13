@@ -7,12 +7,11 @@ import Hour from './Hour'
 import Minute from './Minute'
 import Second from './Second'
 import { color } from './settings'
-import { DateHelper } from './util'
+import { DateHelper, Poly } from './util'
 
 class App extends Component {
   state = {
-    width: 200,
-    height: 200,
+    cPoly: new Poly(200, 200)
   }
 
   requestAnimationFrameCallback = () => {

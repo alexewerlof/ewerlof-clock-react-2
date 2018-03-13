@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Poly } from './util.js';
 
 export default class Hour extends Component {
 
@@ -9,18 +8,16 @@ export default class Hour extends Component {
     }
 
     render() {
-        const { width, height, color, time } = this.props
-        const poly = new Poly(width, height)
-        const { hDeg } = time
+        const { color, time: { hDeg }, cPoly } = this.props
         return (
             <g>
             <line
-              x1={poly.X(hDeg, -20)}
-              y1={poly.Y(hDeg, -20)}
-              x2={poly.X(hDeg, 65)}
-              y2={poly.Y(hDeg, 65)}
+              x1={cPoly.X(hDeg, -20)}
+              y1={cPoly.Y(hDeg, -20)}
+              x2={cPoly.X(hDeg, 65)}
+              y2={cPoly.Y(hDeg, 65)}
               stroke={color}
-              strokeWidth={poly.R(8.3)} />
+              strokeWidth={cPoly.R(8.3)} />
           </g>
         );
     }
