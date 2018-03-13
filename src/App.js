@@ -42,7 +42,7 @@ class App extends Component {
 
   render() {
     return (
-      <svg width={this.state.width} height={this.state.height} style={ {backgroundColor: color.bg} }>
+      <svg width={this.state.cPoly.width} height={this.state.cPoly.height} style={ {backgroundColor: color.bg} }>
           <Face bgColor={color.face} indicatorColor={color.indicator} {...this.state}></Face>
           <Hour color={color.hour} {...this.state}></Hour>
           <Minute color={color.minute} {...this.state}></Minute>

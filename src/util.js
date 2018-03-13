@@ -69,6 +69,14 @@ export class Poly {
     }
   }
 
+  get width() {
+    return this.cx * 2
+  }
+
+  get height() {
+    return this.cy * 2
+  }
+
   R(rPerc = 100) {
     return this.r * rPerc / 100;
   }
