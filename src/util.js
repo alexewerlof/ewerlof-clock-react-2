@@ -65,7 +65,7 @@ export class Poly {
         this.r = Math.min(width, height) / 2;
       }
     } else {
-      throw `At least one of the coordinates are not a number ${cx} ${cy} ${r}`
+      throw new Error(`At least one of the coordinates are not a number ${cx} ${cy} ${r}`)
     }
   }
 
@@ -94,7 +94,7 @@ export class Poly {
 export class DateHelper {
 
   static MONTH_NAMES = [
-    ,   // 0
+    '0 IS INVALID',   // 0
     'Jan', // 1
     'Feb', // 2
     'Mar', // 3
